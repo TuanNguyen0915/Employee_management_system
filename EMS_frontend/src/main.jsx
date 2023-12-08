@@ -11,7 +11,7 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <ToastContainer theme='dark' position='top-right' autoClose={3000} closeOnClick pauseOnHover={false} />
+      <ToastContainer theme='dark' position='top-right' autoClose={2000} closeOnClick pauseOnHover={false} />
       <App />
     </BrowserRouter>
   </React.StrictMode>,
