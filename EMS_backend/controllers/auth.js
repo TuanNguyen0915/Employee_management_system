@@ -12,11 +12,13 @@ const generateToken = user => {
 const register = async (req, res) => {
   try {
     let user
+    // Check user exists by role
     if (req.body.role === 'admin') {
       user = await Admin.findOne({ email: req.body.email })
     } else if (req.body.role === 'user') {
       user = await Admin.findOne({ email: req.body.email })
     }
+    // return error message if user was found, create hashPassword otherwise
     if (user) {
       return res.status(500).json({ success: false, message: "The account exists. Please try to login" })
     }
@@ -47,6 +49,30 @@ const register = async (req, res) => {
   }
 }
 
+const login = async (req, res) => {
+  try {
+    let loginUser
+    const admin = await Admin.findOne({ email: req.body.email })
+    const user = await User.findOne({ email: req.body.email })
+    loginUser = admin ? admin : user ? user : null
+    // if loginUser = null, return with error message, check password otherwise
+    if (!loginUser) {
+      return res.status(404).json({ success: false, message: "This account doesn't exist. Please register new account " })
+    }
+    // check password
+    const isPasswordMatching = await bcrypt.compare(req.body.password, loginUser.password)
+    // return error if isPasswordMatching false, generateToken otherwise
+    if (!isPasswordMatching) {
+      return res.status(500).json({ success: false, message: " This password is not matching" })
+    }
+    // create Token
+    const token = generateToken(loginUser)
+    const { password, role, ...rest } = loginUser._doc
+    res.status(200).json({ success: true, message: "Login successful", token, data: { ...rest } })
 
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Interval server error. Please, try again' })
+  }
+}
 
-export { register }
+export { register, login }
