@@ -1,6 +1,13 @@
 import User from "../models/user.js"
 import Admin from "../models/admin.js"
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+
+
+const generateToken = user => {
+  return jwt.sign({ id: user._id, role: user._role }, process.env.JWT_KEY, { expiresIn: '15d' })
+}
+
 
 const register = async (req, res) => {
   try {
@@ -39,5 +46,7 @@ const register = async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal server error. Try again ' })
   }
 }
+
+
 
 export { register }
