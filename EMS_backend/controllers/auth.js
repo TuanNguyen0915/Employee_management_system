@@ -25,7 +25,7 @@ const register = async (req, res) => {
         role: req.body.role
       })
     } else if (req.body.role === 'user') {
-      user = await Admin.create({
+      user = await User.create({
         email: req.body.email,
         password: hashPassword,
         firstName: req.body.firstName,
