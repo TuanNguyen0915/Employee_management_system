@@ -14,7 +14,7 @@
   }
 
   .btn {
-    @apply text-whiteColor py-4 px-4 mt-[36px] border border-solid border-greenBorder bg-greenBG font-semibold rounded-lg mb-4 hover:bg-primaryColor hover:text-greenBorder;
+    @apply text-whiteColor text-[20px] py-4 px-4 mt-[36px] border border-solid border-greenBorder bg-greenBG font-semibold rounded-lg mb-4 hover:bg-primaryColor hover:text-greenBorder;
   }
 }
 

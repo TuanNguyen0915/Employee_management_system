@@ -12,6 +12,7 @@ export default {
         greenBG: '#00684A',
         lightGreenBG: '#71F6BA',
         greenBorder: '#01EC64',
+        greenText: '#01EC64',
         linkText: '#0067FF'
       },
       boxShadow: {
