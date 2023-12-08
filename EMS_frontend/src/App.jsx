@@ -1,8 +1,17 @@
+// mpm modules
+import { Routes, Route } from 'react-router-dom'
+
+//pages
+import Home from "./pages/Home/Home"
+
+
 const App = () => {
   return (
-    <div className="container">
-      <h1 className="text-primaryColor text-center">Install Tailwind</h1>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </>
   )
 }
 

@@ -7,11 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryColor: '#011e2b',
-        whiteColor: '#e8edeb',
-        greenBG: '#00684a',
-        greenBorder: '#01ec64',
-        lightGreenBG: '#71f6ba',
+        primaryColor: '#011E2B',
+        whiteColor: '#E8EDEB',
+        greenBG: '#00684A',
+        lightGreenBG: '#71F6BA',
+        greenBorder: '#01EC64',
         linkText: '#0067FF'
       },
       boxShadow: {

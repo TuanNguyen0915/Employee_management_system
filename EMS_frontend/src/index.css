@@ -2,13 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  section {
+    @apply mt-5;
+  }
+}
+
 @layer components {
   .container {
     @apply max-w-full w-[1440px] px-[30px] mx-auto
   }
 
   .btn {
-    @apply py-[35px] px-[50px] mt-[36px]
+    @apply text-whiteColor py-4 px-4 mt-[36px] border border-solid border-greenBorder bg-greenBG font-semibold rounded-lg mb-4 hover:bg-primaryColor hover:text-greenBorder
   }
 }
 
