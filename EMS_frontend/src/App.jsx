@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 //pages
 import Home from "./pages/Home/Home"
+import DashBoard from './pages/DashBoard/DashBoard'
 
 // css
 import './App.css'
@@ -12,6 +13,7 @@ const App = () => {
     <>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/dashboard' element={<DashBoard />} />
       </Routes>
     </>
   )
