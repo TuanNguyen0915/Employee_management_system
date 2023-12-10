@@ -6,7 +6,7 @@ export const navList = [
     to: '/dashboard',
   },
   {
-    name: 'Manage Employees',
+    name: 'Employees',
     to: '/dashboard'
   },
   {

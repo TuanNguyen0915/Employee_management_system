@@ -41,14 +41,14 @@ const NavBar = ({ tab, setTab }) => {
               <Link
                 onClick={() => setTab(link.name)}
                 to={link.to}
-                className={`${tab === link.name ? 'text-greenText md:pl-[40px] backdrop-blur-md bg-white/10 rounded-lg' : 'text-white'} 
+                className={`${tab === link.name ? 'text-greenText md:pl-[60px] backdrop-blur-md bg-white/10 rounded-lg' : 'text-white'} 
               flex gap-2 md:gap-4 text-[14px] md:text-[20px] font-semibold px-4 py-2
               hover:backdrop-blur-md hover:bg-white/40  hover:rounded-lg
               `}
               >
                 <div className="w-10 h-10 flex justify-center items-center">
                   {link.name === 'DashBoard' && <AiOutlineDashboard className="md:w-10 md:h-10 w-7 h-7 " />}
-                  {link.name === 'Manage Employees' && <FaPeopleRoof className="md:w-10 md:h-10 w-7 h-7 translate-y-2" />}
+                  {link.name === 'Employees' && <FaPeopleRoof className="md:w-10 md:h-10 w-7 h-7 " />}
                   {link.name === 'Category' && <BiCategory className="md:w-10 md:h-10 w-7 h-7 " />}
                   {link.name === 'Profile' && <ImProfile className="md:w-10 md:h-10 w-7 h-7 " />}
                   {link.name === 'LogOut' && <LuLogOut className="md:w-10 md:h-10 w-7 h-7 " />}

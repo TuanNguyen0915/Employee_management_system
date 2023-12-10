@@ -7,13 +7,15 @@ import DashBoard from './pages/DashBoard/DashBoard'
 
 // css
 import './App.css'
+import Employees from './components/Employees/Employees'
 
 const App = () => {
   return (
     <>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/dashboard' element={<DashBoard />} />
+        <Route path='/dashboard' element={<DashBoard />} ></Route>
+        <Route path='/dashboard/employees' element={<Employees />} />
       </Routes>
     </>
   )
