@@ -5,6 +5,7 @@ import Home from "../../components/Home/Home"
 import Employees from "../../components/Employees/Employees"
 import Category from "../../components/Category/Category"
 import Profile from "../../components/Profile/Profile"
+import LogOut from "../../components/LogOut/LogOut"
 
 
 
@@ -24,6 +25,7 @@ const DashBoard = () => {
           {tab === 'Employees' && <Employees />}
           {tab === 'Category' && <Category />}
           {tab === 'Profile' && <Profile />}
+          {tab === 'LogOut' && <LogOut />}
         </div>
       </div>
     </section>

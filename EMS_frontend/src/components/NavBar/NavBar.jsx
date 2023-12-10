@@ -12,8 +12,7 @@ const NavBar = ({ tab, setTab, toggle, setToggle }) => {
   return (
     <div
       className="md:w-1/4"
-      onClick={()=> setToggle(true)}
-      >
+    >
       <div
         className="md:hidden object-contain"
         onClick={() => setToggle(!toggle)}
