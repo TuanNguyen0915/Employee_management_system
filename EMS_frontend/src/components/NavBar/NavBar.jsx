@@ -7,14 +7,13 @@ import { BiCategory, BiMenu } from "react-icons/bi";
 import { ImProfile } from "react-icons/im";
 import { LuLogOut } from "react-icons/lu";
 import { GrClose } from "react-icons/gr";
-import { useState } from "react";
 
-
-const NavBar = ({ tab, setTab }) => {
-  const [toggle, setToggle] = useState(false)
+const NavBar = ({ tab, setTab, toggle, setToggle }) => {
   return (
     <div
-      className="md:w-1/4">
+      className="md:w-1/4"
+      onClick={()=> setToggle(true)}
+      >
       <div
         className="md:hidden object-contain"
         onClick={() => setToggle(!toggle)}
@@ -41,7 +40,7 @@ const NavBar = ({ tab, setTab }) => {
               <Link
                 onClick={() => setTab(link.name)}
                 to={link.to}
-                className={`${tab === link.name ? 'text-greenText md:pl-[60px] backdrop-blur-md bg-white/10 rounded-lg' : 'text-white'} 
+                className={`${tab === link.name ? 'text-greenText md:pl-[40px] backdrop-blur-md bg-white/10 rounded-lg' : 'text-white'} 
               flex gap-2 md:gap-4 text-[14px] md:text-[20px] font-semibold px-4 py-2
               hover:backdrop-blur-md hover:bg-white/40  hover:rounded-lg
               `}
