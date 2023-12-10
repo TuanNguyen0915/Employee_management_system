@@ -52,7 +52,8 @@ const Home = () => {
           >Login Page
           </h2>
         </div>
-        <div className="w-full mt-4">
+        {/* ERROR MESSAGE */}
+        <div className="w-full mt-6">
           {errMessage && <h2 className="text-red-400 text-[16px] text-center">{errMessage}</h2>}
         </div>
         <form className="flex flex-col md:gap-4 gap-3 mt-[50px]" onSubmit={handleSubmit}>
