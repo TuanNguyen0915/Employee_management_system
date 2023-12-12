@@ -3,7 +3,7 @@ import { toast } from "react-toastify"
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/categories/create`
 
 
-const Create = () => {
+const CreateCategory = () => {
   const [formData, setFormData] = useState({
     name: ''
   })
@@ -39,9 +39,10 @@ const Create = () => {
       onSubmit={handleSubmit}
       >
         <input
-          type="text" name='name' value={formData.value} placeholder="Enter new category"
+          type="text" name='name' value={formData.value} placeholder="Enter category ..."
           onChange={handleChange}
           className="p-3 text-[16px] rounded-md"
+          required
         />
         <button className="btn p-1">Submit</button>
       </form>
@@ -49,4 +50,4 @@ const Create = () => {
   )
 }
 
-export default Create
+export default CreateCategory

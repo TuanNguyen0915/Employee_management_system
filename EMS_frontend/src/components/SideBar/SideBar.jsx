@@ -9,13 +9,13 @@ import { LuLogOut } from "react-icons/lu";
 import { GrClose } from "react-icons/gr";
 import { useState } from "react";
 
-const NavBar = ({tab}) => {
+const SideBar = ({tab}) => {
   // const [tab, setTab] = useState('DashBoard')
   const [toggle, setToggle] = useState(false)
 
   return (
     <div
-      className="md:w-1/4"
+      className="md:w-1/4  top-0 left-0"
     >
       <div
         className="md:hidden object-contain"
@@ -67,4 +67,4 @@ const NavBar = ({tab}) => {
   )
 }
 
-export default NavBar
+export default SideBar
