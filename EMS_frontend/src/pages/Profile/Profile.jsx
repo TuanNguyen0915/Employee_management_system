@@ -1,23 +1,20 @@
-// components
 import NavBar from "../../components/NavBar/NavBar"
-import News from "../../components/News/News"
 
-const DashBoard = () => {
 
+const Profile = () => {
   return (
     <section>
       <div className="container flex w-full">
-        <NavBar tab='DashBoard'/>
+        <NavBar tab='Profile'/>
 
         {/* CONTENT */}
         <div className="md:w-3/4 w-full h-[100vh] flex flex-col bg-slate-300"
         >
-          <News />
+          This is profile
         </div>
       </div>
     </section>
   )
 }
 
-export default DashBoard
-  
+export default Profile

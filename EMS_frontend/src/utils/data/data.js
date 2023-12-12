@@ -7,18 +7,18 @@ export const navList = [
   },
   {
     name: 'Employees',
-    to: '/dashboard'
+    to: '/employees'
   },
   {
     name: 'Category',
-    to: '/dashboard'
+    to: '/categories'
   },
   {
     name: 'Profile',
-    to: '/dashboard'
+    to: '/profile'
   },
   {
     name: 'LogOut',
-    to: '/dashboard'
+    to: '/logout'
   },
 ]

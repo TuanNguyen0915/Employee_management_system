@@ -16,6 +16,10 @@
   .btn {
     @apply text-whiteColor text-[20px] py-4 px-4 mt-[36px] border border-solid border-greenBorder bg-greenBG font-semibold rounded-lg mb-4 hover:bg-primaryColor hover:text-greenBorder;
   }
+
+  .btnForm {
+    @apply text-white text-[16px] p-2 mt-[36px] border border-solid border-primaryColor bg-primaryColor font-semibold rounded-lg mb-4 hover:bg-slate-300
+  }
 }
 
 @media only screen and (max-width: 1024px) {

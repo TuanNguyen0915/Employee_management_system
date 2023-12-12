@@ -7,8 +7,12 @@ import { BiCategory, BiMenu } from "react-icons/bi";
 import { ImProfile } from "react-icons/im";
 import { LuLogOut } from "react-icons/lu";
 import { GrClose } from "react-icons/gr";
+import { useState } from "react";
 
-const NavBar = ({ tab, setTab, toggle, setToggle }) => {
+const NavBar = ({tab}) => {
+  // const [tab, setTab] = useState('DashBoard')
+  const [toggle, setToggle] = useState(false)
+
   return (
     <div
       className="md:w-1/4"
@@ -37,7 +41,7 @@ const NavBar = ({ tab, setTab, toggle, setToggle }) => {
               className={`${idx < navList.length - 1 ? 'mb-[20px] md:mb-[40px]' : 'mb-0'} w-full px-[10px]`}
             >
               <Link
-                onClick={() => setTab(link.name)}
+                // onClick={() => setTab(link.name)}
                 to={link.to}
                 className={`${tab === link.name ? 'text-greenText md:pl-[40px] backdrop-blur-md bg-white/10 rounded-lg' : 'text-white'} 
               flex gap-2 md:gap-4 text-[14px] md:text-[20px] font-semibold px-4 py-2
