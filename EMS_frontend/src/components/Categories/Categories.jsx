@@ -47,7 +47,6 @@ const Categories = () => {
           <thead className="border-b-2 border-slate-400">
             <tr>
               <th className="p-2 md:p-4 font-semibold tracking-wide text-left ">Name</th>
-              <th className="p-2 md:p-4 font-semibold tracking-wide text-left ">ID</th>
               <th className="p-2 md:p-4 font-semibold tracking-wide text-left "></th>
             </tr>
           </thead>
@@ -57,11 +56,10 @@ const Categories = () => {
                 <tr key={c._id}
                   className={`${(idx % 2 !== 0) ? 'bg-slate-400' :'bg-transparent'}`}
                 >
-                  <td className="p-1 md:p-2">
+                  <td className="p-2 md:p-4">
                     {c.name}
                   </td>
-                  <td className="p-1 md:p-2">{c._id}</td>
-                  <td className="p-1 md:p-2">
+                  <td className="p-2 md:p-4">
                     <button
                       className="w-8 h-8 bg-red-400 p-1 m-1 rounded-md ml-[50px]"
                       onClick={() => handleDelete(c._id)}
@@ -77,10 +75,10 @@ const Categories = () => {
       <div className="flex justify-center items-center">
         {!addCate
           ?
-          <button className="btn py-2 px-4 mt-[50px]" onClick={() => setAddCate(true)}>
+          <button className="btn border-none py-2 px-4 mt-[50px]" onClick={() => setAddCate(true)}>
             Add Category
           </button>
-          : <CreateCategory />
+          : <CreateCategory setAddCate={setAddCate}/>
         }
       </div>
     </div>

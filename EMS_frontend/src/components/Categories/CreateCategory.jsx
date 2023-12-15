@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 import { toast } from "react-toastify"
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/categories/create`
 
 
-const CreateCategory = () => {
+const CreateCategory = ({setAddCate}) => {
   const [formData, setFormData] = useState({
     name: ''
   })
@@ -13,7 +14,8 @@ const CreateCategory = () => {
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
       const result = await fetch(BASE_URL, {
         method:'POST',
@@ -27,6 +29,7 @@ const CreateCategory = () => {
         throw new Error(message)
       }
       toast.success(message)
+      setAddCate(false)
     } catch (error) {
       toast.error(error.message)
     }
@@ -34,16 +37,16 @@ const CreateCategory = () => {
   return (
     <div className="w-full flex justify-center items-center">
       <form 
-      className="flex flex-col mt-[10rem] border border-solid border-primaryColor rounded-lg px-10 py-5 bg-primaryColor"
+      className="flex flex-col mt-[10rem] border border-solid border-primaryColor rounded-lg px-10 py-5"
       onSubmit={handleSubmit}
       >
         <input
           type="text" name='name' value={formData.value} placeholder="Enter category ..."
           onChange={handleChange}
-          className="p-3 text-[16px] rounded-md"
+          className="p-3 text-[16px] rounded-md bg-slate-200 focus:outline-none"
           required
         />
-        <button className="btn p-1">Submit</button>
+        <button className="btn border-none p-1">Submit</button>
       </form>
     </div>
   )
