@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['admin', 'user'], default: 'user' },
   salary: { type: Number, require: true },
   photo: { type: String },
-  category: {type: mongoose.Types.ObjectId, ref:'Category'}
+  category: {type: String}
 }, {
   timestamps: true
 })

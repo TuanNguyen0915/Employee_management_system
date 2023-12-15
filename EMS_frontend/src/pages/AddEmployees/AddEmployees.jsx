@@ -153,7 +153,7 @@ const AddEmployees = () => {
               >
                 {/* <option value="">Select ...</option> */}
                 {categories.map((c) => (
-                  <option key={c._id} value={c._id}>
+                  <option key={c._id} value={c.name}>
                     {c.name}
                   </option>
                 ))}

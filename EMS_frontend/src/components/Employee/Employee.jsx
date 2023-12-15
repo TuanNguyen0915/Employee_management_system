@@ -18,19 +18,39 @@ const Employee = () => {
     fetchData()
   }, [BASE_URL])
   console.log(employees)
-  
+
   return (
-    <div>
-      {employees?.map((emp) => (
-        <h1 key={emp._id}>{emp.email}</h1>
-      ))}
+    <>
+      <div className="w-full flex justify-center items-center">
+        <table className="table-auto">
+          <thead className="border-b-2 border-slate-400">
+            <tr>
+              <th className="pr-2 md:pr-4 font-semibold tracking-wide text-center ">Name</th>
+              <th className="pr-2 md:pr-4 font-semibold tracking-wide text-center ">Email</th>
+              <th className="pr-2 md:pr-4 font-semibold tracking-wide text-center ">Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employees.map((e,idx) => (
+              <tr 
+              key={e._id}
+              className={`${idx !== 0?'bg-slate-400':'bg-transparent'} py-2`}
+              >
+                <td className="p-2 md:p-4">{e.firstName} {e.lastName}</td>
+                <td className="p-2 md:p-4">{e.email}</td>
+                <td className="p-2 md:p-4">{e.category}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <div className="flex justify-center items-center">
         <Link to="/employees/add_employees">
           <button className="btn border-none py-2 px-4 mt-[50px]">Add Employees</button>
         </Link>
       </div>
-    </div>
+    </>
   )
 }
 
