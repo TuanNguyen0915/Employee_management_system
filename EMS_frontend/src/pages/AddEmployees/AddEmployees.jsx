@@ -2,11 +2,26 @@ import { useNavigate } from "react-router-dom"
 import SideBar from "../../components/SideBar/SideBar"
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
+import UploadImgToCloudinary from "../../utils/uploadCloudinary"
 
 const AddEmployees = () => {
   const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
   const navigate = useNavigate()
   const [categories, setCategories] = useState([])
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    dob: "",
+    category: "",
+    password: "",
+    salary: "",
+    address: "",
+    imageUrl: "",
+  })
+
+  const [previewImg, setPreviewImg] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,17 +40,12 @@ const AddEmployees = () => {
     fetchData()
   })
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    dob: "",
-    category: "",
-    password: "",
-    salary: "",
-    address: "",
-    imageUrl: "",
-  })
+  const handleImgInputChange = async (e) => {
+    const file = await e.target.files[0]
+    const data = await UploadImgToCloudinary(file)
+    setPreviewImg(data.url)
+    setFormData({ ...formData, imageUrl: data.url })
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -180,8 +190,13 @@ const AddEmployees = () => {
                 type="file"
                 name="imageUrl"
                 accept=".jpg, .png"
+                onChange={handleImgInputChange}
               />
-
+              {previewImg && (
+                <div className="md:w-1/5 w-1/3">
+                  <img className="w-full h-full rounded-full" src={previewImg} />
+                </div>
+              )}
               <button className="min-w-[50%] mx-auto btn border-none text-[16px]">Add Employee</button>
             </form>
           </div>
