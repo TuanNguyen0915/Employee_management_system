@@ -25,15 +25,13 @@ const Categories = () => {
       }
     }
     fetchData()
-  }, [data])
+  },)
 
   const handleDelete = async (categoryId) => {
     try {
       const res = await fetch(`${BASE_URL}/${categoryId}`, {
         method: 'delete'
       })
-      console.log(`${BASE_URL}/${categoryId}`)
-
       if (!res.ok) {
         throw new Error(res.message)
       }
@@ -46,32 +44,30 @@ const Categories = () => {
     <div>
       <div>
         <table className="w-full">
-          <thead>
-            <tr className="text-left border-b-2 border-b-slate-500">
-              <th>Name</th>
-              <th>ID</th>
-              <th></th>
+          <thead className="border-b-2 border-slate-400">
+            <tr>
+              <th className="p-2 md:p-4 font-semibold tracking-wide text-left ">Name</th>
+              <th className="p-2 md:p-4 font-semibold tracking-wide text-left ">ID</th>
+              <th className="p-2 md:p-4 font-semibold tracking-wide text-left "></th>
             </tr>
           </thead>
-          <tbody>
 
+          <tbody>
             {data.map((c, idx) => (
-              <div key={c._id}>
-                <tr
-                  className={`${(idx % 2 === 0) ? 'bg-slate-400' : 'bg-slate-300'} w-full flex justify-between items-center text-left`}
+                <tr key={c._id}
+                  className={`${(idx % 2 !== 0) ? 'bg-slate-400' :'bg-transparent'}`}
                 >
-                  <th>
+                  <td className="p-1 md:p-2">
                     {c.name}
-                  </th>
-                  <th>{c._id}</th>
-                  <th>
+                  </td>
+                  <td className="p-1 md:p-2">{c._id}</td>
+                  <td className="p-1 md:p-2">
                     <button
                       className="w-8 h-8 bg-red-400 p-1 m-1 rounded-md ml-[50px]"
                       onClick={() => handleDelete(c._id)}
                     >X</button>
-                  </th>
+                  </td>
                 </tr>
-              </div>
             ))}
 
 
