@@ -5,7 +5,6 @@ const Employees = () => {
   return (
     <section>
       <div className="container flex w-full">
-        {/* <SideBar tab={tab} setTab={setTab} toggle={toggle} setToggle={setToggle} /> */}
         <SideBar tab='Employees'/>
 
         {/* CONTENT */}

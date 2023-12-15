@@ -13,8 +13,7 @@ const CreateCategory = () => {
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const handleSubmit = async () => {
     try {
       const result = await fetch(BASE_URL, {
         method:'POST',
