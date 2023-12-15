@@ -7,7 +7,7 @@ const DashBoard = () => {
   return (
     <section>
       <div className="container flex w-full">
-        <SideBar tab='DashBoard'/>
+        <SideBar />
 
         {/* CONTENT */}
         <div className="md:w-3/4 w-full h-[100vh] flex flex-col bg-slate-300"

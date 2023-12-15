@@ -8,6 +8,7 @@ import Employees from './pages/Employees/Employees'
 import Category from './pages/Category/Category'
 import Profile from './pages/Profile/Profile'
 import LogOut from './pages/LogOut/LogOut'
+import AddEmployees from './pages/AddEmployees/AddEmployees'
 // css
 import './App.css'
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/dashboard' element={<DashBoard />} />
         <Route path='/employees' element={<Employees />} />
+        <Route path='/employees/add_employees' element={<AddEmployees />} />
         <Route path='/categories' element={<Category />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='logout' element={<LogOut />} />

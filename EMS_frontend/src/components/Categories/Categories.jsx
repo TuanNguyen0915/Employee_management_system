@@ -42,9 +42,9 @@ const Categories = () => {
 
   return (
     <div>
-      <div>
-        <table className="w-full">
-          <thead className="border-b-2 border-slate-400">
+      <div className="w-full flex flex-col justify-center items-center">
+        <table >
+          <thead className=" border-b-2 border-slate-400">
             <tr>
               <th className="p-2 md:p-4 font-semibold tracking-wide text-left ">Name</th>
               <th className="p-2 md:p-4 font-semibold tracking-wide text-left "></th>
