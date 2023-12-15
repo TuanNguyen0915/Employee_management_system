@@ -9,6 +9,7 @@ import './config/database.js'
 // import routers
 import { router as authRouter } from './routers/auth.js'
 import { router as CategoryRouter } from './routers/category.js'
+import {router as employeeRouter} from './routers/employee.js'
 
 const app = express()
 const corOptions = {
@@ -23,6 +24,7 @@ app.use(cors(corOptions))
 // routes
 app.use('/api/auth', authRouter)
 app.use('/api/categories', CategoryRouter)
+app.use('/api/employees', employeeRouter)
 
 app.listen(port, () => {
   console.log("Server is running at", port)

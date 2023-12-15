@@ -1,10 +1,36 @@
+import { useNavigate } from "react-router-dom"
 import SideBar from "../../components/SideBar/SideBar"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { toast } from "react-toastify"
 
 const AddEmployees = () => {
+  const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
+  const navigate = useNavigate()
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/categories`)
+        const result = await res.json()
+        const { message } = result.message
+        if (!res.ok) {
+          throw new Error(message)
+        }
+        setCategories(result.data)
+      } catch (error) {
+        toast.error(error.message)
+      }
+    }
+    fetchData()
+  })
+
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    dob: "",
+    category: "",
     password: "",
     salary: "",
     address: "",
@@ -16,24 +42,68 @@ const AddEmployees = () => {
     setFormData({ ...formData, [name]: value })
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await fetch(`${BASE_URL}/employees`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      const { message } = await res.json()
+      if (!res.ok) {
+        throw new Error(message)
+      }
+      toast.success(message)
+      navigate("/employees")
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
   return (
     <section>
       <div className="container flex w-full">
         <SideBar />
-        <div className="md:w-3/4 w-full h-screen flex flex-col bg-slate-300">
-          <h1 className="text-[20px] md:text-[40px] w-full text-center mb-[6rem] text-primaryColor p-4 border-b-2 border-slate-600/20 capitalize">
-            Add New Employee
-          </h1>
-          <div className="w-4/5 md:w-2/3 mx-auto border border-slate-600/40 rounded-lg">
-            <form className="w-full flex flex-col px-2 py-4 gap-2 md:gap-4">
+        <div className="md:w-3/4 w-full min-h-screen flex flex-col bg-slate-300">
+          <div className="w-4/5 md:w-2/3 mx-auto border border-slate-600/40 rounded-lg mt-4 md:mt-8">
+            <h1 className="text-[20px] md:text-[40px] text-center mb-8 text-white bg-primaryColor rounded-t-lg border-b-2 border-slate-600/20 capitalize">
+              Add New Employee
+            </h1>
+            <form className="w-full flex flex-col px-4 md:px-8 py-2 gap-2" onSubmit={handleSubmit}>
               {/* NAME */}
-              <label>Name</label>
+              <label>First Name</label>
               <input
                 className="w-full py-1 px-2 border border-slate-600/40 bg-slate-200  focus:outline outline-primaryColor placeholder-black/50"
                 type="text"
-                name="name"
-                value={formData.name}
-                placeholder="Enter Name"
+                name="firstName"
+                value={formData.firstName}
+                placeholder="Enter First Name"
+                autoComplete="off"
+                required
+                onChange={handleChange}
+              />
+              <label>Last Name</label>
+              <input
+                className="w-full py-1 px-2 border border-slate-600/40 bg-slate-200  focus:outline outline-primaryColor placeholder-black/50"
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                placeholder="Enter Last Name"
+                autoComplete="off"
+                required
+                onChange={handleChange}
+              />
+              {/* DOB */}
+              <label>Day Of Birth</label>
+              <input
+                className="w-full py-1 px-2 border border-slate-600/40 bg-slate-200  focus:outline outline-primaryColor placeholder-black/50"
+                type="date"
+                name="dob"
+                value={formData.dob}
+                placeholder="Enter mm/dd/yyyy"
                 autoComplete="off"
                 required
                 onChange={handleChange}
@@ -42,7 +112,7 @@ const AddEmployees = () => {
               <label>Email</label>
               <input
                 className="w-full py-1 px-2 border border-slate-600/40 bg-slate-200  focus:outline outline-primaryColor placeholder-black/50"
-                type="text"
+                type="email"
                 name="email"
                 value={formData.email}
                 placeholder="Enter Email"
@@ -62,11 +132,27 @@ const AddEmployees = () => {
                 required
                 onChange={handleChange}
               />
+              {/* CATEGORY */}
+              <label>Category</label>
+              <select
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                className="w-full py-1 px-2 border border-slate-600/40 bg-slate-200 focus:outline outline-primaryColor placeholder-black/50"
+                required
+              >
+                {/* <option value="">Select ...</option> */}
+                {categories.map((c) => (
+                  <option key={c._id} value={c._id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
               {/* SALARY */}
               <label>Salary</label>
               <input
                 className="w-full py-1 px-2 border border-slate-600/40 bg-slate-200 focus:outline outline-primaryColor placeholder-black/50"
-                type="text"
+                type="number"
                 name="salary"
                 value={formData.salary}
                 placeholder="Enter Salary"
@@ -95,8 +181,8 @@ const AddEmployees = () => {
                 name="imageUrl"
                 accept=".jpg, .png"
               />
-              
-                <button className="min-w-[50%] mx-auto btn border-none text-[16px]">Add Employee</button>
+
+              <button className="min-w-[50%] mx-auto btn border-none text-[16px]">Add Employee</button>
             </form>
           </div>
         </div>
