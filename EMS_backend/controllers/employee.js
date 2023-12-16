@@ -22,14 +22,24 @@ const allEmployees = async (req, res) => {
   }
 }
 
-const showEmployee = async (req,res) => {
+const showEmployee = async (req, res) => {
   try {
     let selectedEmployee = await User.findById(req.params.employeeId)
-    return res.status(201).json({success: true, message: "The employee has found", data: selectedEmployee})
+    return res.status(201).json({ success: true, message: "The employee has found", data: selectedEmployee })
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Interval server error. Please, try again' })
-    
+
   }
 }
 
-export { allEmployees, createEmployee, showEmployee }
+const deleteEmployee = async (req, res) => {
+  try {
+    let selectedEmployee = await User.findByIdAndDelete(req.params.employeeId)
+    return res.status(201).json({ success: true, message: 'Deleted employee', data: selectedEmployee })
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Interval server error. Please, try again' })
+
+  }
+}
+
+export { allEmployees, createEmployee, showEmployee, deleteEmployee }

@@ -6,5 +6,6 @@ const router = Router()
 router.get('/', employeeCtrl.allEmployees)
 router.get('/:employeeId', employeeCtrl.showEmployee)
 router.post('/', employeeCtrl.createEmployee)
+router.delete('/:employeeId', employeeCtrl.deleteEmployee)
 
 export { router }

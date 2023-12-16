@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 /* eslint-disable react/prop-types */
-const EmployeeDetail = ({ employee, joinDate }) => {
+const EmployeeDetail = ({ employee, joinDate, BASE_URL }) => {
   const navigate = useNavigate()
-  const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/${employee._id}`
 
   const handleDelete = async () => {
     try {
