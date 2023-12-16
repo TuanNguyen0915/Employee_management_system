@@ -22,4 +22,14 @@ const allEmployees = async (req, res) => {
   }
 }
 
-export { allEmployees, createEmployee }
+const showEmployee = async (req,res) => {
+  try {
+    let selectedEmployee = await User.findById(req.params.employeeId)
+    return res.status(201).json({success: true, message: "The employee has found", data: selectedEmployee})
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Interval server error. Please, try again' })
+    
+  }
+}
+
+export { allEmployees, createEmployee, showEmployee }
