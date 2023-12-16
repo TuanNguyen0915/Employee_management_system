@@ -18,7 +18,7 @@ const Employee = () => {
     }
     fetchData()
   }, [BASE_URL])
-  console.log(employees)
+  
 
   return (
     <>

@@ -30,7 +30,6 @@ const Home = () => {
         body: JSON.stringify(user)
       })
       const res = await result.json()
-      console.log(res)
       if (!result.ok) {
         setErrMessage(res.message)
       }
