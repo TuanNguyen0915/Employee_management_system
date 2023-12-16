@@ -1,5 +1,6 @@
+
 /* eslint-disable react/prop-types */
-const EmployeeDetail = ({ employee }) => {
+const EmployeeDetail = ({ employee, joinDate }) => {
   console.log(employee)
   return (
     <div className="flex flex-col md:flex-row items-center gap-2">
@@ -37,10 +38,10 @@ const EmployeeDetail = ({ employee }) => {
           <h1>Pay Rate: </h1>
           <span>${employee.salary}/hrs</span>
         </div>
-        {/* <div className="w-full flex justify-between items-center">
+        <div className="w-full flex justify-between items-center">
           <h1>Joined at: </h1>
-          <span>{employee.createdAt.split(":")[0].split("T")[0]}</span>
-        </div> */}
+          <span>{joinDate}</span>
+        </div>
       </div>
     </div>
   )
