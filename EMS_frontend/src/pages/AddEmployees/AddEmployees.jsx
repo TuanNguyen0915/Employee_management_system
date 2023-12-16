@@ -18,7 +18,7 @@ const AddEmployees = () => {
     password: "",
     salary: "",
     address: "",
-    imageUrl: "",
+    photo: "",
   })
 
   const [previewImg, setPreviewImg] = useState("")
@@ -44,7 +44,7 @@ const AddEmployees = () => {
     const file = await e.target.files[0]
     const data = await UploadImgToCloudinary(file)
     setPreviewImg(data.url)
-    setFormData({ ...formData, imageUrl: data.url })
+    setFormData({ ...formData, photo: data.url })
   }
 
   const handleChange = (e) => {
@@ -183,7 +183,7 @@ const AddEmployees = () => {
                 onChange={handleChange}
               />
               {/* IMAGE */}
-              <label>Image</label>
+              <label>Add Image</label>
               <input
                 className="w-full py-1 px-2 border border-slate-600/40 bg-slate-200 focus:outline 
                 outline-primaryColor placeholder-black/50"

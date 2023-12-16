@@ -35,16 +35,16 @@ const Employee = () => {
           </thead>
           <tbody>
             {employees.map((e, idx) => (
-              <tr key={e._id} className={`${idx !== 0 ? "bg-slate-400" : "bg-transparent"}`}>
-                <div className="w-full h-full hidden md:flex justify-center items-center ">
-                  <td className="p-2 md:p-4">
+              <tr key={e._id} className={`${idx % 2 !== 0 ? "bg-slate-400" : "bg-transparent"}`}>
+                <td className="p-2 md:p-4 hidden md:block">
+                  <div className="w-14 h-14 flex justify-center items-center">
                     {e.photo ? (
                       <img src={e.photo} alt="" className="w-full rounded-full" />
                     ) : (
                       <RxAvatar style={{ scale: "2" }} />
                     )}
-                  </td>
-                </div>
+                  </div>
+                </td>
                 <td className="p-2 md:p-4">
                   {e.firstName} {e.lastName}
                 </td>
