@@ -18,11 +18,12 @@ const Employee = () => {
     }
     fetchData()
   }, [BASE_URL])
+
   
 
   return (
     <>
-      <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center mt-4 md:mt-8">
         <table className="table-auto">
           <thead className="border-b-2 border-slate-400">
             <tr>
