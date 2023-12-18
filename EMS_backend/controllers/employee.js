@@ -42,4 +42,14 @@ const deleteEmployee = async (req, res) => {
   }
 }
 
-export { allEmployees, createEmployee, showEmployee, deleteEmployee }
+const editEmployee = async (req, res) => {
+  try {
+    let selectedEmployee = await User.findByIdAndUpdate(req.params.employeeId, req.body, { new: true })
+    return res.status(201).json({ success: true, message: 'Edited employee', data: selectedEmployee })
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Interval server error. Please, try again' })
+
+  }
+}
+
+export { allEmployees, createEmployee, showEmployee, deleteEmployee, editEmployee }

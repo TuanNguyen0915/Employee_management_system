@@ -7,5 +7,6 @@ router.get('/', employeeCtrl.allEmployees)
 router.get('/:employeeId', employeeCtrl.showEmployee)
 router.post('/', employeeCtrl.createEmployee)
 router.delete('/:employeeId', employeeCtrl.deleteEmployee)
+router.put('/:employeeId', employeeCtrl.editEmployee)
 
 export { router }

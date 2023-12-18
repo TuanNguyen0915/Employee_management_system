@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import ConfirmBox from "../ConfirmBox/ConfirmBox"
 import { useState } from "react"
@@ -73,7 +73,10 @@ const EmployeeDetail = ({ employee, joinDate, BASE_URL }) => {
         </div>
         {/* BUTTON */}
         <div className="w-full flex justify-between items-center">
-          <button className="btn border-none text-[16px]">Edit</button>
+          <Link to={`/employees/${employee._id}/edit`} state={employee}>
+            <button className="btn border-none text-[16px]">Edit</button>
+          </Link>
+
           <button className="btn border-none text-[16px] bg-red-700" onClick={() => setOpenConfirmBox(true)}>
             Delete
           </button>
